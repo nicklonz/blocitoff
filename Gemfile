@@ -26,4 +26,5 @@ gem 'faker'
 gem 'devise'
 gem 'figaro'
 gem 'pundit'
+gem 'thin'
 gem 'whenever', require: false
