@@ -24,9 +24,8 @@ lists = List.all
 # Create Items
 100.times do
  item = Item.create(
-    user: users.sample,
     list: lists.sample,
-    body: Faker::Lorem.sentence
+    name: Faker::Lorem.sentence
   )
   item.update_attribute(:created_at, rand(10.minutes .. 6.days).ago)
 
