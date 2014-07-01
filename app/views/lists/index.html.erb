@@ -1,8 +1,9 @@
 <h1>Your Lists</h1>
+<%= link_to "Create a New List", new_list_path, class: 'btn btn-success' %>
 <% @lists.each do |list| %>
   <h3>
     <%= link_to list.title, list %> </br>
   </h3>
 <% end %>
 
-<%= link_to "New List", new_list_path, class: 'btn btn-success' %>
+

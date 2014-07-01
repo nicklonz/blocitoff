@@ -1,4 +1,5 @@
 class ListsController < ApplicationController
+  
   def create
   @list = List.new(params.require(:list).permit(:title))
   if @list.save
@@ -22,5 +23,6 @@ end
 
   def new
     @list = List.new
+    authorize @list
   end
 end
