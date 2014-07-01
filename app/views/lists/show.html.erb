@@ -1,2 +1,26 @@
-<h1>Lists#show</h1>
-<p>Find me in app/views/lists/show.html.erb</p>
+<div class='container-fluid'>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h1><center><%= @list.name %></center></h1>
+    </div>
+  </div>
+
+  <div class='container outside-border'>
+   
+     <!-- HEADER -->
+    <div class= 'row header'>
+      <div class='col-md-8'><b>Description of task</b></div>
+      <div class='col-md-2'><b>Days left</b></div>
+    </div>
+
+    <!-- FORM -->
+    <div class='new-item'>
+      <%= render partial: 'items/form', locals: {list: @list, item: @item } %>
+    </div>
+
+    <!-- LIST OF ITEMS -->
+    <div class='items-list'>
+      <%= render partial: 'items/item', collection: @items %>
+    </div>
+  </div>
+</div>
