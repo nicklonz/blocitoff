@@ -19,6 +19,9 @@ end
   end
 
   def show
+    @list = List.find(params[:id])
+    @items = @list.items
+    @item = Item.new
   end
 
   def new
