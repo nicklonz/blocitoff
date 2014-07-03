@@ -4,7 +4,7 @@ class Item < ActiveRecord::Base
 
   default_scope { order('created_at ASC') }
 
-  validates :body, length: { minimum: 1 }
+  validates :name, length: { minimum: 1 }
 
   def days_left
     days_ago_created = ((Time.now - self.created_at)/84600).round
