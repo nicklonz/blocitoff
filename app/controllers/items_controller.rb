@@ -1,31 +1,23 @@
 class ItemsController < ApplicationController
-  
+
   def create
-    # save the item
-    # redirect to the list  show
-    
     @list = List.find(params[:list_id])
-  
-    @items = @list.items
-
-    @item = current_user.items.build( item_params )
+    @item = Item.new(item_params)
     @item.list = @list
-    @new_item = Item.new  
+    @new_item = Item.new
 
-  if @item.save
+    if @item.save
       flash[:notice] = "Item was created."
     else
       flash[:error] = "There was an error saving the item. Please try again."
     end
 
-    respond_with(@item) do |f|
-      f.html { redirect_to [@list] }
-    end
+    redirect_to @list
   end
 
   def destroy
-    #destroy the item
-    #redirect to the list show
+    @list = List.find(params[:list_id])
+    @item = Item.find(params[:id])
 
     if @item.destroy
       flash[:notice] = "Item was removed."
@@ -33,8 +25,12 @@ class ItemsController < ApplicationController
       flash[:error] = "Item couldn't be deleted. Try again."
     end
 
-    respond_with(@item) do |f|
-      f.html { redirect_to [@list] }
-    end
+    redirect_to @list
+  end
+
+  private
+
+  def item_params
+    params.require(:item).permit(:name)
   end
 end
